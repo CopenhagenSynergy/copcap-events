@@ -1,0 +1,116 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Copenhagen Capacity//Eastern Denmark Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Eastern Denmark Business Events
+X-WR-TIMEZONE:Europe/Copenhagen
+X-WR-CALDESC:Verified business events in Copenhagen and Eastern Denmark
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:3eb881363d0d813bbaede256d794085b@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261106
+SUMMARY:Innovation Roundtable® Summit 2026
+LOCATION:Tivoli Hotel & Congress Center\, Copenhagen V
+DESCRIPTION:Corporate-only summit on innovation\, HR and marketing. Innovat
+ ion track 3–5 Nov\, Marketing 3–4 Nov\, HR 4–5 Nov.\nOrganiser: Inno
+ vation Roundtable\nhttps://innovationroundtable.com/summit/
+URL:https://innovationroundtable.com/summit/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d8118ba9af8e01ff502cb@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270312
+SUMMARY:Insurance Innovators Nordics 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:Insurance-industry event for the Nordic region\, focused on inn
+ ovation in insurance.\nOrganiser: Insurance Innovators\nhttps://insurance-
+ innovators.com/events/nordics/
+URL:https://insurance-innovators.com/events/nordics/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d818498a3e9f5375554bd@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270320
+SUMMARY:The Summit 2027
+LOCATION:Industriens Hus\, H.C. Andersens Boulevard 18\, 1553 Copenhagen
+DESCRIPTION:Nordic gathering for leaders and organisations on AI\, immersiv
+ e experiences and other emerging technologies and their impact on business
+  and society.\n09:00–18:00\, doors open 08:30.\nOrganiser: The Summit\nh
+ ttps://www.thesummit.dk/
+URL:https://www.thesummit.dk/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d81b09e9ff23c4d92e2e2@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270513
+DTEND;VALUE=DATE:20270515
+SUMMARY:LSX Nordic Congress 2027
+LOCATION:Copenhagen (venue to be announced)
+DESCRIPTION:Life-science partnering and investment congress connecting biot
+ ech\, medtech and healthtech companies with investors and strategic partne
+ rs.\nVenue not yet announced by the organiser.\nOrganiser: LSX / Informa C
+ onnect\nhttps://informaconnect.com/lsx-nordic-congress/
+URL:https://informaconnect.com/lsx-nordic-congress/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d8164b332daf2b8d11e15@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270525
+DTEND;VALUE=DATE:20270528
+SUMMARY:Global Fashion Summit: Copenhagen Edition 2027
+LOCATION:Copenhagen (venue to be announced)
+DESCRIPTION:Industry forum on sustainability in fashion\, presented by the 
+ non-profit Global Fashion Agenda.\nVenue not yet announced by the organise
+ r.\nOrganiser: Global Fashion Agenda\nhttps://globalfashionsummit.com/
+URL:https://globalfashionsummit.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d81a198a9f1c012a3bfe7@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270525
+DTEND;VALUE=DATE:20270526
+SUMMARY:PropTech Symposium 2027
+LOCATION:Moltkes Palæ\, Copenhagen
+DESCRIPTION:Nordic proptech and real-estate innovation event gathering deci
+ sion-makers\, innovators and proptech actors.\nOrganiser: PropTech Denmark
+ \nhttps://www.proptechdk.dk/symposium
+URL:https://www.proptechdk.dk/symposium
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d81a48f40e98da70ddc81@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270908
+DTEND;VALUE=DATE:20270910
+SUMMARY:TechBBQ 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:Startup and tech event for founders\, builders and investors.\n
+ Organiser: TechBBQ\nhttps://techbbq.dk/
+URL:https://techbbq.dk/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3eb881363d0d81ab9f61f108ffb05d1f@eastern-denmark-events
+DTSTAMP:20260930T135003Z
+DTSTART;VALUE=DATE:20270922
+DTEND;VALUE=DATE:20270924
+SUMMARY:BIM World Copenhagen 2027
+LOCATION:K.B. Hallen\, Frederiksberg
+DESCRIPTION:Event on BIM (Building Information Modelling) and digital const
+ ruction\, architecture and real estate.\nOrganiser: BIM World Copenhagen\n
+ https://www.bimworld-cph.com/
+URL:https://www.bimworld-cph.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
