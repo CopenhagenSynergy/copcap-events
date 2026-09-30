@@ -76,17 +76,18 @@ h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{
 .copy button{{padding:9px 14px;border:1px solid var(--teal);background:none;color:var(--teal);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}}
 ul{{list-style:none;padding:0;margin:0}}li{{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}}
 time{{font-weight:600;color:var(--teal);font-size:.9rem}}li a{{color:var(--fg);font-weight:600;text-decoration:none}}li a:hover{{text-decoration:underline}}
-li span,li em{{display:block;color:var(--muted);font-size:.88rem}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
+li span,li em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
 @media (max-width:520px){{li{{grid-template-columns:1fr;gap:2px}}}}
 </style></head><body><main>
 <h1>{CAL}</h1>
 <p>Upcoming conferences and business events in Copenhagen and Eastern Denmark, curated by Copenhagen Capacity. Every listing is checked against the organiser's own website; please confirm details with the organiser before you travel.</p>
+<p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p>
+<h2>Upcoming events</h2><ul>{items}</ul>
 <h2>Add to my calendar</h2>
 <p>Subscribe once and new events appear in your calendar automatically.</p>
 <div class="btns">{btns}</div>
 <div class="copy"><input id="u" readonly value="{html.escape(ics)}" aria-label="Calendar feed URL"><button onclick="navigator.clipboard.writeText(document.getElementById('u').value);this.textContent='Copied'">Copy link</button></div>
-<h2>Upcoming events</h2><ul>{items}</ul>
-<footer>Last updated {today.strftime('%-d %B %Y')}. Copenhagen Capacity · Nørregade 7B, DK-1165 Copenhagen · <a href="https://www.copcap.com" style="color:inherit">copcap.com</a></footer>
+<footer>Last updated {today.strftime('%-d %B %Y')}. Copenhagen Capacity · Havneholmen 29, DK-1561 Copenhagen V · <a href="https://www.copcap.com" style="color:inherit">copcap.com</a></footer>
 </main></body></html>"""
 open(os.path.join(out, "index.html"), "w").write(page)
 print(f"{len(evs)} upcoming events written")
