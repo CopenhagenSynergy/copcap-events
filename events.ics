@@ -9,48 +9,274 @@ X-WR-CALDESC:Verified business events in Copenhagen and Eastern Denmark
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
+UID:3ec881363d0d816db94bd3d5e4d62e9c@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261010
+SUMMARY:IBA Annual Conference 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:The International Bar Association's annual conference for the l
+ egal profession.\nOrganiser: International Bar Association (IBA)\nMeet Cop
+ Cap: CopCap\nhttps://www.ibanet.org/conference-details/CONF2635
+URL:https://www.ibanet.org/conference-details/CONF2635
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d810dbe38d64f00423474@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:E-handelskonferencen 2026
+LOCATION:Lokomotivværkstedet\, København SV
+DESCRIPTION:Dansk Erhverv's annual e-commerce conference\, a full day of kn
+ owledge\, inspiration and networking for the e-commerce industry.\n08:00
+ –18:00. Danish-language event.\nOrganiser: Dansk Erhverv\nMeet CopCap: C
+ opCap\nhttps://www.danskerhverv.dk/kurser-og-events/2026/oktober/e-handels
+ konferencen-2026/
+URL:https://www.danskerhverv.dk/kurser-og-events/2026/oktober/e-handelskonf
+ erencen-2026/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d819ca6e7ed6e2650023f@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261015
+SUMMARY:Pharma Smart Manufacturing 2026
+LOCATION:Scandic Spectrum\, Kalvebod Brygge 10\, 1560 Copenhagen
+DESCRIPTION:A conference on smart and digital pharmaceutical manufacturing.
+ \nOrganiser: Fleming\nMeet CopCap: CopCap\nhttps://fleming.events/pharma-s
+ mart-manufacturing/
+URL:https://fleming.events/pharma-smart-manufacturing/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d8172910bfdfac95e1bc5@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261017
+SUMMARY:Intergraf Currency+Identity 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:A conference and exhibition for security printing companies\, c
+ entral banks and law enforcement.\nOrganiser: Intergraf\nMeet CopCap: CopC
+ ap\nhttps://intergrafconference.com/
+URL:https://intergrafconference.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d813d8de1e5b70930d053@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261021
+SUMMARY:Pax8 Beyond EMEA 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:An IT provider conference hosted by Pax8.\nOrganiser: Pax8\nMee
+ t CopCap: CopCap\nhttps://pax8beyond.com/emea
+URL:https://pax8beyond.com/emea
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d81558864ca942a0113a9@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261029
+SUMMARY:MoneyLIVE Nordic Banking 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:A Nordic banking conference for banking\, fintech and payments 
+ leaders from the Nordic and Baltic region.\nOrganiser: MoneyLIVE\nMeet Cop
+ Cap: CopCap\nhttps://moneylive-insights.com/events/nordic-banking/
+URL:https://moneylive-insights.com/events/nordic-banking/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d8105ae99e6ebe8afd8f2@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261105
+SUMMARY:Dalux Summit 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:Dalux's annual summit for construction and facility management 
+ professionals\, with sessions on construction technology.\nOrganiser: Dalu
+ x\nMeet CopCap: CopCap\nhttps://www.dalux.com/summit/
+URL:https://www.dalux.com/summit/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:3eb881363d0d813bbaede256d794085b@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261106
 SUMMARY:Innovation Roundtable® Summit 2026
 LOCATION:Tivoli Hotel & Congress Center\, Copenhagen V
 DESCRIPTION:Corporate-only summit on innovation\, HR and marketing. Innovat
  ion track 3–5 Nov\, Marketing 3–4 Nov\, HR 4–5 Nov.\nOrganiser: Inno
- vation Roundtable\nhttps://innovationroundtable.com/summit/
+ vation Roundtable\nMeet CopCap: Lars Lin Villebæk\, Investment Promotion\
+ nhttps://innovationroundtable.com/summit/
 URL:https://innovationroundtable.com/summit/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3ec881363d0d81548ebadd491fd20798@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261106
+SUMMARY:Digital Tech Summit 2026
+LOCATION:Øksnehallen\, Halmtorvet 11\, 1700 Copenhagen V
+DESCRIPTION:An expo and conference on AI and digital transformation\, organ
+ ised by Ingeniøren.\nOrganiser: Ingeniøren\nMeet CopCap: CopCap\nhttps:/
+ /event.ing.dk/dts6
+URL:https://event.ing.dk/dts6
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d81a7a77be2f6409bfda6@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:BSides København 2026
+LOCATION:Bella Center\, Martha Christensens Vej 10\, 2300 København
+DESCRIPTION:A one-day community conference on cyber security\, hacking and 
+ IT/OT security.\n10:00–22:00.\nOrganiser: BSides København\nMeet CopCap
+ : CopCap\nhttps://bsideskbh.dk/
+URL:https://bsideskbh.dk/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d81889317daa463a66409@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261120
+SUMMARY:SAPinsider Copenhagen 2026
+LOCATION:Tivoli Hotel & Congress Center\, Arni Magnussons Gade 2\, 1577 Kø
+ benhavn
+DESCRIPTION:A conference on SAP strategies with education\, expert insights
+  and peer networking.\n16 November is a pre-conference day.\nOrganiser: SA
+ Pinsider\nMeet CopCap: CopCap\nhttps://copenhagen.sapinsider.org/
+URL:https://copenhagen.sapinsider.org/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d818cb250c9b61d44d63a@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261128
+SUMMARY:Horizons Clean Energy Expansion Week 2026
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:A multi-track event on hydrogen\, feedstocks and fuels\, CCUS\,
+  resilient grids and financing for clean energy.\nFormerly World Hydrogen 
+ & Carbon Week.\nOrganiser: Horizons Clean Energy Expansion Week\nMeet CopC
+ ap: CopCap\nhttps://www.hceeweek.com/event/2026/home
+URL:https://www.hceeweek.com/event/2026/home
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d8112967efc342c446ff9@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270202
+DTEND;VALUE=DATE:20270205
+SUMMARY:CIFF 68
+LOCATION:Bella Center Copenhagen\, Center Boulevard 5\, 2300 Copenhagen S
+DESCRIPTION:A bi-annual international fashion trade fair in Copenhagen.\nOr
+ ganiser: CIFF – Copenhagen International Fashion Fair\nMeet CopCap: CopC
+ ap\nhttps://ciff.dk/
+URL:https://ciff.dk/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d819fa1cfe20006146fa1@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270226
+SUMMARY:DeCarbon Copenhagen 2027
+LOCATION:Copenhagen (venue to be announced)
+DESCRIPTION:Two co-located conferences – Biomass Trade & Power Europe and
+  Renewable Gas Markets Europe 2027 – with a joint agenda on 24 February.
+ \nVenue not yet stated by the organiser.\nOrganiser: CMT\nMeet CopCap: Cop
+ Cap\nhttps://www.cmtevents.com/aboutevent.aspx?ev=270202&
+URL:https://www.cmtevents.com/aboutevent.aspx?ev=270202&
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d81baa5ccf44c1974c299@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270225
+SUMMARY:World Maritime Forum 2027
+LOCATION:Copenhagen (venue to be announced)
+DESCRIPTION:A forum for the maritime industry.\nVenue for the 2027 edition 
+ not yet stated by the organiser.\nOrganiser: World Maritime Forum\nMeet Co
+ pCap: CopCap\nhttps://worldmaritime-forum.com/
+URL:https://worldmaritime-forum.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:3eb881363d0d8118ba9af8e01ff502cb@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270310
 DTEND;VALUE=DATE:20270312
 SUMMARY:Insurance Innovators Nordics 2027
 LOCATION:Bella Center Copenhagen
 DESCRIPTION:Insurance-industry event for the Nordic region\, focused on inn
- ovation in insurance.\nOrganiser: Insurance Innovators\nhttps://insurance-
- innovators.com/events/nordics/
+ ovation in insurance.\nOrganiser: Insurance Innovators\nMeet CopCap: CopCa
+ p\nhttps://insurance-innovators.com/events/nordics/
 URL:https://insurance-innovators.com/events/nordics/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d818498a3e9f5375554bd@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270319
 DTEND;VALUE=DATE:20270320
 SUMMARY:The Summit 2027
 LOCATION:Industriens Hus\, H.C. Andersens Boulevard 18\, 1553 Copenhagen
 DESCRIPTION:Nordic gathering for leaders and organisations on AI\, immersiv
  e experiences and other emerging technologies and their impact on business
-  and society.\n09:00–18:00\, doors open 08:30.\nOrganiser: The Summit\nh
- ttps://www.thesummit.dk/
+  and society.\n09:00–18:00\, doors open 08:30.\nOrganiser: The Summit\nM
+ eet CopCap: CopCap\nhttps://www.thesummit.dk/
 URL:https://www.thesummit.dk/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3ec881363d0d81c49b1ae6b71c1ae41a@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270420
+DTEND;VALUE=DATE:20270423
+SUMMARY:WindEurope Annual Event 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:WindEurope's annual event for the wind energy industry.\nOrgani
+ ser: WindEurope\nMeet CopCap: CopCap\nhttps://windeurope.org/annual2027/
+URL:https://windeurope.org/annual2027/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d8153867feb1659676141@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270515
+SUMMARY:EuroSTAR Software Testing Conference 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:The EuroSTAR software testing conference for the test community
+ .\nOrganiser: EuroSTAR\nMeet CopCap: CopCap\nhttps://conference.eurostarso
+ ftwaretesting.com/
+URL:https://conference.eurostarsoftwaretesting.com/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:3ec881363d0d81988f14c3dd0f40acc1@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270512
+DTEND;VALUE=DATE:20270514
+SUMMARY:V2 Security København 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:An expo and conference on cyber and information security.\nOrga
+ niser: V2 Security\nMeet CopCap: CopCap\nhttps://www.v2security.dk/koebenh
+ avn7/12007132
+URL:https://www.v2security.dk/koebenhavn7/12007132
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:3eb881363d0d81b09e9ff23c4d92e2e2@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270513
 DTEND;VALUE=DATE:20270515
 SUMMARY:LSX Nordic Congress 2027
@@ -58,58 +284,72 @@ LOCATION:Copenhagen (venue to be announced)
 DESCRIPTION:Life-science partnering and investment congress connecting biot
  ech\, medtech and healthtech companies with investors and strategic partne
  rs.\nVenue not yet announced by the organiser.\nOrganiser: LSX / Informa C
- onnect\nhttps://informaconnect.com/lsx-nordic-congress/
+ onnect\nMeet CopCap: CopCap\nhttps://informaconnect.com/lsx-nordic-congres
+ s/
 URL:https://informaconnect.com/lsx-nordic-congress/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d8164b332daf2b8d11e15@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270525
 DTEND;VALUE=DATE:20270528
 SUMMARY:Global Fashion Summit: Copenhagen Edition 2027
 LOCATION:Copenhagen (venue to be announced)
 DESCRIPTION:Industry forum on sustainability in fashion\, presented by the 
  non-profit Global Fashion Agenda.\nVenue not yet announced by the organise
- r.\nOrganiser: Global Fashion Agenda\nhttps://globalfashionsummit.com/
+ r.\nOrganiser: Global Fashion Agenda\nMeet CopCap: CopCap\nhttps://globalf
+ ashionsummit.com/
 URL:https://globalfashionsummit.com/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81a198a9f1c012a3bfe7@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270525
 DTEND;VALUE=DATE:20270526
 SUMMARY:PropTech Symposium 2027
 LOCATION:Moltkes Palæ\, Copenhagen
 DESCRIPTION:Nordic proptech and real-estate innovation event gathering deci
  sion-makers\, innovators and proptech actors.\nOrganiser: PropTech Denmark
- \nhttps://www.proptechdk.dk/symposium
+ \nMeet CopCap: CopCap\nhttps://www.proptechdk.dk/symposium
 URL:https://www.proptechdk.dk/symposium
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:3ec881363d0d81cb90c8c2c2abbb31e8@eastern-denmark-events
+DTSTAMP:20261001T064208Z
+DTSTART;VALUE=DATE:20270617
+DTEND;VALUE=DATE:20270619
+SUMMARY:TwentyThree Summit 2027
+LOCATION:DR Concert Hall\, DR Byen\, Ørestads Boulevard 13\, Copenhagen
+DESCRIPTION:TwentyThree's annual conference on video.\nOrganiser: TwentyThr
+ ee\nMeet CopCap: CopCap\nhttps://www.twentythree.com/summit
+URL:https://www.twentythree.com/summit
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:3eb881363d0d81a48f40e98da70ddc81@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270908
 DTEND;VALUE=DATE:20270910
 SUMMARY:TechBBQ 2027
 LOCATION:Bella Center Copenhagen
 DESCRIPTION:Startup and tech event for founders\, builders and investors.\n
- Organiser: TechBBQ\nhttps://techbbq.dk/
+ Organiser: TechBBQ\nMeet CopCap: CopCap\nhttps://techbbq.dk/
 URL:https://techbbq.dk/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81ab9f61f108ffb05d1f@eastern-denmark-events
-DTSTAMP:20260930T140800Z
+DTSTAMP:20261001T064208Z
 DTSTART;VALUE=DATE:20270922
 DTEND;VALUE=DATE:20270924
 SUMMARY:BIM World Copenhagen 2027
 LOCATION:K.B. Hallen\, Frederiksberg
 DESCRIPTION:Event on BIM (Building Information Modelling) and digital const
  ruction\, architecture and real estate.\nOrganiser: BIM World Copenhagen\n
- https://www.bimworld-cph.com/
+ Meet CopCap: CopCap\nhttps://www.bimworld-cph.com/
 URL:https://www.bimworld-cph.com/
 TRANSP:TRANSPARENT
 END:VEVENT

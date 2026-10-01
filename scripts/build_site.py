@@ -37,7 +37,7 @@ L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Copenhagen Capacity//Eastern D
      "REFRESH-INTERVAL;VALUE=DURATION:PT12H", "X-PUBLISHED-TTL:PT12H"]
 for s, e, r in evs:
     uid = r["url"].rstrip("/").split("/")[-1].split("?")[0] + "@eastern-denmark-events"
-    desc = "\n".join(x for x in [r.get("Description"), r.get("Date note"), "Organiser: " + (r.get("Organiser") or ""), r.get("Website")] if x)
+    desc = "\n".join(x for x in [r.get("Description"), r.get("Date note"), "Organiser: " + (r.get("Organiser") or ""), "Meet CopCap: " + ((r.get("Meet CopCap") or "").strip() or "CopCap"), r.get("Website")] if x)
     L += ["BEGIN:VEVENT", "UID:" + uid, "DTSTAMP:" + stamp,
           "DTSTART;VALUE=DATE:" + s.strftime("%Y%m%d"), "DTEND;VALUE=DATE:" + (e + dt.timedelta(days=1)).strftime("%Y%m%d"),
           "SUMMARY:" + esc(r["Event"]), "LOCATION:" + esc(r.get("Venue")), "DESCRIPTION:" + esc(desc),
@@ -56,11 +56,14 @@ def fmt(s, e):
     if s == e: return s.strftime("%-d %b %Y")
     if s.year == e.year and s.month == e.month: return f"{s.day}–{e.strftime('%-d %b %Y')}"
     return f"{s.strftime('%-d %b')} – {e.strftime('%-d %b %Y')}"
+def meet(r): return (r.get("Meet CopCap") or "").strip() or "CopCap"
 items = "".join(
-    f'<li><time>{fmt(s, e)}</time><div><a href="{html.escape(r.get("Website") or "#")}" rel="noopener">{html.escape(r["Event"])}</a>'
+    f'<tr><td class="d" data-l="Date"><time>{fmt(s, e)}</time></td>'
+    f'<td class="ev" data-l="Event"><a href="{html.escape(r.get("Website") or "#")}" rel="noopener">{html.escape(r["Event"])}</a>'
     f'<span>{html.escape(r.get("Venue") or "")}</span>'
-    + (f'<em>{html.escape(r["Date note"])}</em>' if r.get("Date note") else "") + "</div></li>"
-    for s, e, r in evs) or "<li>No upcoming events listed yet.</li>"
+    + (f'<em>{html.escape(r["Date note"])}</em>' if r.get("Date note") else "") + "</td>"
+    f'<td class="m" data-l="Meet CopCap">{html.escape(meet(r))}</td></tr>'
+    for s, e, r in evs) or '<tr><td colspan="3">No upcoming events listed yet.</td></tr>'
 btns = "".join(f'<a class="btn" href="{html.escape(v)}">{k}</a>' for k, v in links.items())
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{CAL}</title><link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,20 +72,21 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name
 :root{{--navy:#090446;--teal:#2B757C;--bg:#fff;--fg:#1b1b2f;--muted:#5d6070;--line:#e4e6ee;--card:#f6f7fb}}
 @media (prefers-color-scheme:dark){{:root{{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Montserrat,system-ui,sans-serif}}
-main{{max-width:760px;margin:0 auto;padding:40px 16px 64px}}h1,h2{{font-family:'IBM Plex Serif',Georgia,serif;color:var(--navy);line-height:1.2}}
+main{{max-width:860px;margin:0 auto;padding:40px 16px 64px}}h1,h2{{font-family:'IBM Plex Serif',Georgia,serif;color:var(--navy);line-height:1.2}}
 h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{color:var(--muted);margin:0 0 16px}}
 .btns{{display:flex;flex-wrap:wrap;gap:8px}}.btn{{background:var(--teal);color:#fff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600;font-size:.9rem}}
 .copy{{display:flex;gap:8px;margin-top:12px}}.copy input{{flex:1;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;font-size:.85rem}}
 .copy button{{padding:9px 14px;border:1px solid var(--teal);background:none;color:var(--teal);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}}
-ul{{list-style:none;padding:0;margin:0}}li{{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}}
-time{{font-weight:600;color:var(--teal);font-size:.9rem}}li a{{color:var(--fg);font-weight:600;text-decoration:none}}li a:hover{{text-decoration:underline}}
-li span,li em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
-@media (max-width:520px){{li{{grid-template-columns:1fr;gap:2px}}}}
+table{{width:100%;border-collapse:collapse}}th{{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;padding:0 12px 8px 0;border-bottom:2px solid var(--line)}}
+td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:140px;white-space:nowrap}}td.m{{width:170px;font-size:.88rem}}
+time{{font-weight:600;color:var(--teal);font-size:.9rem}}td a{{color:var(--fg);font-weight:600;text-decoration:none}}td a:hover{{text-decoration:underline}}
+td span,td em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
+@media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m{{width:auto}}td.m::before{{content:attr(data-l) ": ";color:var(--muted)}}}}
 </style></head><body><main>
 <h1>{CAL}</h1>
 <p>Upcoming conferences and business events in Copenhagen and Eastern Denmark, curated by Copenhagen Capacity. Every listing is checked against the organiser's own website; please confirm details with the organiser before you travel.</p>
 <p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p>
-<h2>Upcoming events</h2><ul>{items}</ul>
+<h2>Upcoming events</h2><table><thead><tr><th>Date</th><th>Event</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
 <h2>Add to my calendar</h2>
 <p>Subscribe once and new events appear in your calendar automatically.</p>
 <div class="btns">{btns}</div>
