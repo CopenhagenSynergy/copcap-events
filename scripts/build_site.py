@@ -57,13 +57,17 @@ def fmt(s, e):
     if s.year == e.year and s.month == e.month: return f"{s.day}–{e.strftime('%-d %b %Y')}"
     return f"{s.strftime('%-d %b')} – {e.strftime('%-d %b %Y')}"
 def meet(r): return (r.get("Meet CopCap") or "").strip() or "CopCap"
+def country(r): return (r.get("Country") or "").strip() or "Denmark"
 items = "".join(
-    f'<tr><td class="d" data-l="Date"><time>{fmt(s, e)}</time></td>'
+    f'<tr data-country="{html.escape(country(r))}"><td class="d" data-l="Date"><time>{fmt(s, e)}</time></td>'
     f'<td class="ev" data-l="Event"><a href="{html.escape(r.get("Website") or "#")}" rel="noopener">{html.escape(r["Event"])}</a>'
     f'<span>{html.escape(r.get("Venue") or "")}</span>'
     + (f'<em>{html.escape(r["Date note"])}</em>' if r.get("Date note") else "") + "</td>"
+    f'<td class="c" data-l="Country">{html.escape(country(r))}</td>'
     f'<td class="m" data-l="Meet CopCap">{html.escape(meet(r))}</td></tr>'
-    for s, e, r in evs) or '<tr><td colspan="3">No upcoming events listed yet.</td></tr>'
+    for s, e, r in evs) or '<tr><td colspan="4">No upcoming events listed yet.</td></tr>'
+countries = sorted({country(r) for _, _, r in evs} | {"Denmark"}, key=lambda c: (c != "Denmark", c == "Online", c))
+opts = "".join(f'<option value="{html.escape(c)}"{" selected" if c == "Denmark" else ""}>{html.escape(c)}</option>' for c in countries) + '<option value="">All countries</option>'
 btns = "".join(f'<a class="btn" href="{html.escape(v)}">{k}</a>' for k, v in links.items())
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{CAL}</title><link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,15 +82,24 @@ h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{
 .copy{{display:flex;gap:8px;margin-top:12px}}.copy input{{flex:1;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;font-size:.85rem}}
 .copy button{{padding:9px 14px;border:1px solid var(--teal);background:none;color:var(--teal);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}}
 table{{width:100%;border-collapse:collapse}}th{{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;padding:0 12px 8px 0;border-bottom:2px solid var(--line)}}
-td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:140px;white-space:nowrap}}td.m{{width:170px;font-size:.88rem}}
+td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:140px;white-space:nowrap}}td.m{{width:170px;font-size:.88rem}}td.c{{width:110px;font-size:.88rem}}tr[hidden]{{display:none}}
+.filter{{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:.88rem}}.filter label{{font-weight:600}}.filter select{{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}}#cn{{color:var(--muted)}}
 time{{font-weight:600;color:var(--teal);font-size:.9rem}}td a{{color:var(--fg);font-weight:600;text-decoration:none}}td a:hover{{text-decoration:underline}}
 td span,td em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
-@media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m{{width:auto}}td.m::before{{content:attr(data-l) ": ";color:var(--muted)}}}}
+@media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m,td.c{{width:auto}}td.m::before,td.c::before{{content:attr(data-l) ": ";color:var(--muted)}}tr[hidden]{{display:none}}}}
 </style></head><body><main>
 <h1>{CAL}</h1>
 <p>Upcoming conferences and business events in Copenhagen and Eastern Denmark, curated by Copenhagen Capacity. Every listing is checked against the organiser's own website; please confirm details with the organiser before you travel.</p>
 <p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p>
-<h2>Upcoming events</h2><table><thead><tr><th>Date</th><th>Event</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
+<h2>Upcoming events</h2>
+<div class="filter"><label for="cf">Country</label><select id="cf">{opts}</select><span id="cn"></span></div>
+<table><thead><tr><th>Date</th><th>Event</th><th>Country</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
+<p id="none" hidden>No upcoming events in this country yet.</p>
+<script>
+(function(){{var sel=document.getElementById('cf'),rows=[].slice.call(document.querySelectorAll('tbody tr[data-country]')),cn=document.getElementById('cn'),none=document.getElementById('none');
+function apply(){{var v=sel.value,n=0;rows.forEach(function(r){{var show=!v||r.getAttribute('data-country')===v;r.hidden=!show;if(show)n++;}});cn.textContent=n+(n===1?' event':' events');none.hidden=n>0;}}
+sel.addEventListener('change',apply);apply();}})();
+</script>
 <h2>Add to my calendar</h2>
 <p>Subscribe once and new events appear in your calendar automatically.</p>
 <div class="btns">{btns}</div>
