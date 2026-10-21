@@ -71,11 +71,14 @@ countries = sorted({country(r) for _, _, r in evs} | {"Denmark"}, key=lambda c: 
 opts = "".join(f'<option value="{html.escape(c)}"{" selected" if c == "Denmark" else ""}>{html.escape(c)}</option>' for c in countries) + '<option value="">All countries</option>'
 btns = "".join(f'<a class="btn" href="{html.escape(v)}">{k}</a>' for k, v in links.items())
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{CAL}</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>{CAL}</title>
+<script>(function(){{var q=new URLSearchParams(location.search),h=document.documentElement;if(q.get("embed")!=="1")return;h.classList.add("embed");h.setAttribute("data-theme",q.get("theme")||"light");if(q.get("subscribe")==="0")h.classList.add("nosub");if(q.get("bg")==="transparent")h.classList.add("clear");}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{{--navy:#090446;--teal:#2B757C;--bg:#fff;--fg:#1b1b2f;--muted:#5d6070;--line:#e4e6ee;--card:#f6f7fb}}
-@media (prefers-color-scheme:dark){{:root{{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}}}
+@media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}}}
+:root[data-theme=dark]{{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Montserrat,system-ui,sans-serif}}
 main{{max-width:1040px;margin:0 auto;padding:40px 16px 64px}}h1,h2{{font-family:'IBM Plex Serif',Georgia,serif;color:var(--navy);line-height:1.2}}
 h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{color:var(--muted);margin:0 0 16px}}
@@ -88,24 +91,33 @@ td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)
 time{{font-weight:600;color:var(--teal);font-size:.9rem}}td a{{color:var(--fg);font-weight:600;text-decoration:none}}td a:hover{{text-decoration:underline}}
 td span,td em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
 @media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m,td.c,td.o{{width:auto}}td.m::before,td.c::before,td.o::before{{content:attr(data-l) ": ";color:var(--muted)}}tr[hidden]{{display:none}}}}
+.embed main{{max-width:none;padding:0 0 8px}}.embed .intro,.embed footer,.embed h2.first{{display:none}}.nosub .sub{{display:none}}.clear body{{background:transparent}}
 </style></head><body><main>
-<h1>{CAL}</h1>
+<div class="intro"><h1>{CAL}</h1>
 <p>Upcoming conferences and business events in Copenhagen and Eastern Denmark, curated by Copenhagen Capacity. Every listing is checked against the organiser's own website; please confirm details with the organiser before you travel.</p>
-<p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p>
-<h2>Upcoming events</h2>
+<p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p></div>
+<h2 class="first">Upcoming events</h2>
 <div class="filter"><label for="cf">Country</label><select id="cf">{opts}</select><span id="cn"></span></div>
 <table><thead><tr><th>Date</th><th>Event</th><th>Organiser</th><th>Country</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
 <p id="none" hidden>No upcoming events in this country yet.</p>
 <script>
 (function(){{var sel=document.getElementById('cf'),rows=[].slice.call(document.querySelectorAll('tbody tr[data-country]')),cn=document.getElementById('cn'),none=document.getElementById('none');
 function apply(){{var v=sel.value,n=0;rows.forEach(function(r){{var show=!v||r.getAttribute('data-country')===v;r.hidden=!show;if(show)n++;}});cn.textContent=n+(n===1?' event':' events');none.hidden=n>0;}}
+var q=new URLSearchParams(location.search);if(q.has('country')){{var c=q.get('country');[].forEach.call(sel.options,function(o){{if(o.value===c)sel.value=c;}});}}
 sel.addEventListener('change',apply);apply();}})();
 </script>
-<h2>Add to my calendar</h2>
+<div class="sub"><h2>Add to my calendar</h2>
 <p>Subscribe once and new events appear in your calendar automatically.</p>
 <div class="btns">{btns}</div>
-<div class="copy"><input id="u" readonly value="{html.escape(ics)}" aria-label="Calendar feed URL"><button onclick="navigator.clipboard.writeText(document.getElementById('u').value);this.textContent='Copied'">Copy link</button></div>
+<div class="copy"><input id="u" readonly value="{html.escape(ics)}" aria-label="Calendar feed URL"><button onclick="navigator.clipboard.writeText(document.getElementById('u').value);this.textContent='Copied'">Copy link</button></div></div>
 <footer>Last updated {today.strftime('%-d %B %Y')}. Copenhagen Capacity · Havneholmen 29, DK-1561 Copenhagen V · <a href="https://www.copcap.com" style="color:inherit">copcap.com</a></footer>
-</main></body></html>"""
+</main>
+<script>
+(function(){{var h=document.documentElement;if(!h.classList.contains("embed"))return;
+var id=new URLSearchParams(location.search).get("id")||"",m=document.querySelector("main"),last=0;
+[].forEach.call(document.querySelectorAll("a[href]"),function(a){{a.target="_blank";a.rel="noopener";}});
+function post(){{var px=Math.ceil(m.getBoundingClientRect().height);if(px!==last&&window.parent!==window){{last=px;window.parent.postMessage({{type:"copcap-events:resize",id:id,height:px}},"*");}}}}
+if(window.ResizeObserver)new ResizeObserver(post).observe(m);window.addEventListener("load",post);window.addEventListener("resize",function(){{setTimeout(post,50);}});document.addEventListener("change",function(){{setTimeout(post,0);}});post();}})();
+</script></body></html>"""
 open(os.path.join(out, "index.html"), "w").write(page)
 print(f"{len(evs)} upcoming events written")
