@@ -77,8 +77,10 @@ def team(r):
     if (r.get("Team") or "").strip(): return r["Team"].strip()  # manual override, if the column is ever added
     picks = {TEAM_BY_SECTOR.get(x, "Tech") for x in sectors(r)}
     return next((t for t in ("Life Science", "Green Transition", "Tech") if t in picks), "Tech")
+TEAMS = ["Life Science", "Green Transition", "Tech"]
+def slug(s): return "-".join("".join(c if c.isalnum() else " " for c in s.lower()).split())
 items = "".join(
-    f'<tr data-country="{html.escape(country(r))}"><td class="d" data-l="Date" data-v="{s.isoformat()}/{e.isoformat()}"><time>{fmt(s, e)}</time></td>'
+    f'<tr data-country="{html.escape(country(r))}" data-team="{slug(team(r))}"><td class="d" data-l="Date" data-v="{s.isoformat()}/{e.isoformat()}"><time>{fmt(s, e)}</time></td>'
     f'<td class="ev" data-l="Event"><a href="{html.escape(r.get("Website") or "#")}" rel="noopener">{html.escape(r["Event"])}</a>'
     f'<span>{html.escape(r.get("Venue") or "")}</span>'
     + (f'<p class="desc">{html.escape(r["Description"].strip())}</p>' if (r.get("Description") or "").strip() else "")
@@ -93,8 +95,9 @@ countries = sorted({country(r) for _, _, r in evs} | {"Denmark"}, key=lambda c: 
 opts = "".join(f'<option value="{html.escape(c)}"{" selected" if c == "Denmark" else ""}>{html.escape(c)}</option>' for c in countries) + '<option value="">All countries</option>'
 # Sortable columns: (URL ?sort= name, header label). Order matches the table cells.
 COLS = [("date", "Date"), ("event", "Event"), ("organiser", "Organiser"), ("sector", "Sector"), ("team", "CopCap team"), ("country", "Country"), ("meet", "Meet CopCap")]
-heads = "".join(f'<th aria-sort="{"ascending" if i == 0 else "none"}"><button type="button" data-col="{i}">{lab}</button></th>' for i, (_, lab) in enumerate(COLS))
+heads = "".join(f'<th class="h-{n}" aria-sort="{"ascending" if i == 0 else "none"}"><button type="button" data-col="{i}">{lab}</button></th>' for i, (n, lab) in enumerate(COLS))
 sortopts = "".join(f'<option value="{i}">{lab}</option>' for i, (_, lab) in enumerate(COLS))
+teamopts = '<option value="">All teams</option>' + "".join(f'<option value="{slug(x)}">{html.escape(x)}</option>' for x in TEAMS + sorted({team(r) for _, _, r in evs} - set(TEAMS)))
 btns = "".join(f'<a class="btn" href="{html.escape(v)}">{k}</a>' for k, v in links.items())
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{CAL}</title>
@@ -114,7 +117,7 @@ h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{
 table{{width:100%;border-collapse:collapse}}th{{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;padding:0 12px 8px 0;border-bottom:2px solid var(--line)}}
 td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:120px;white-space:nowrap}}td.m{{width:150px;font-size:.88rem}}td.c{{width:90px;font-size:.88rem}}td.o{{width:150px;font-size:.88rem}}td.s{{width:130px;font-size:.88rem}}td.t{{width:110px;font-size:.88rem;font-weight:600;color:var(--teal)}}tr[hidden]{{display:none}}
 td p.desc{{margin:6px 0 0;color:var(--fg);font-size:.88rem;line-height:1.45}}
-.filter{{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px;font-size:.88rem}}.filter label{{font-weight:600}}.sortm{{display:none;align-items:center;gap:10px}}
+.filter{{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px;font-size:.88rem}}.filter label{{font-weight:600}}.sortm{{display:none;align-items:center;gap:10px}}.fc,.ft{{display:flex;align-items:center;gap:10px}}.oneteam .ft,.oneteam .h-team,.oneteam td.t{{display:none}}
 th button{{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;text-align:left;cursor:pointer}}th button:hover,th[aria-sort=ascending] button,th[aria-sort=descending] button{{color:var(--fg)}}
 th button::after{{content:"↕";margin-left:4px;opacity:.4}}th[aria-sort=ascending] button::after{{content:"▲";opacity:1}}th[aria-sort=descending] button::after{{content:"▼";opacity:1}}.filter select{{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}}#cn{{color:var(--muted)}}
 time{{font-weight:600;color:var(--teal);font-size:.9rem}}td a{{color:var(--fg);font-weight:600;text-decoration:none}}td a:hover{{text-decoration:underline}}
@@ -133,14 +136,16 @@ nav.top .home{{display:flex;align-items:center;gap:8px;color:#fff;font-weight:60
 <p>Upcoming conferences and business events in Copenhagen and Eastern Denmark, curated by Copenhagen Capacity. Every listing is checked against the organiser's own website; please confirm details with the organiser before you travel.</p>
 <p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p></div>
 <h2 class="first">Upcoming events</h2>
-<div class="filter"><label for="cf">Country</label><select id="cf">{opts}</select><span class="sortm"><label for="sf">Sort by</label><select id="sf">{sortopts}</select></span><span id="cn"></span></div>
+<div class="filter"><span class="fc"><label for="cf">Country</label><select id="cf">{opts}</select></span><span class="ft"><label for="tf">CopCap team</label><select id="tf">{teamopts}</select></span><span class="sortm"><label for="sf">Sort by</label><select id="sf">{sortopts}</select></span><span id="cn"></span></div>
 <table><thead><tr>{heads}</tr></thead><tbody>{items}</tbody></table>
-<p id="none" hidden>No upcoming events in this country yet.</p>
+<p id="none" hidden>No upcoming events match this selection yet.</p>
 <script>
-(function(){{var sel=document.getElementById('cf'),rows=[].slice.call(document.querySelectorAll('tbody tr[data-country]')),cn=document.getElementById('cn'),none=document.getElementById('none');
-function apply(){{var v=sel.value,n=0;rows.forEach(function(r){{var show=!v||r.getAttribute('data-country')===v;r.hidden=!show;if(show)n++;}});cn.textContent=n+(n===1?' event':' events');none.hidden=n>0;}}
+(function(){{var sel=document.getElementById('cf'),tf=document.getElementById('tf'),rows=[].slice.call(document.querySelectorAll('tbody tr[data-country]')),cn=document.getElementById('cn'),none=document.getElementById('none');
+function apply(){{var v=sel.value,t=tf.value,n=0;rows.forEach(function(r){{var show=(!v||r.getAttribute('data-country')===v)&&(!t||r.getAttribute('data-team')===t);r.hidden=!show;if(show)n++;}});cn.textContent=n+(n===1?' event':' events');none.hidden=n>0;}}
 var q=new URLSearchParams(location.search);if(q.has('country')){{var c=q.get('country');[].forEach.call(sel.options,function(o){{if(o.value===c)sel.value=c;}});}}
-sel.addEventListener('change',apply);apply();}})();
+if(q.has('team')){{var t=(q.get('team')||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');[].forEach.call(tf.options,function(o){{if(o.value===t)tf.value=t;}});
+if(tf.value&&document.documentElement.classList.contains('embed')){{document.documentElement.classList.add('oneteam');var so=document.querySelector('#sf option[value="4"]');if(so)so.remove();}}}}
+sel.addEventListener('change',apply);tf.addEventListener('change',apply);apply();}})();
 (function(){{var tb=document.querySelector('tbody'),ths=[].slice.call(document.querySelectorAll('thead th')),sf=document.getElementById('sf'),names={json.dumps([n for n, _ in COLS])},cur=0,dir=1;
 function key(r,i){{var td=r.children[i];if(!td)return'';if(td.hasAttribute('data-v'))return td.getAttribute('data-v');var a=i===1&&td.querySelector('a');return(a||td).textContent.trim();}}
 function sortBy(i,d){{cur=i;dir=d;var rs=[].slice.call(tb.querySelectorAll('tr[data-country]'));

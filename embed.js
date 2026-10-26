@@ -8,6 +8,7 @@
  *
  * Optional attributes on the div:
  *   data-country="Denmark"   preselect a country; data-country="" shows all countries
+ *   data-team="green-transition"  only one CopCap team's events: life-science, green-transition or tech (hides the team column)
  *   data-sort="sector"       initial sort column: date, event, organiser, sector, team, country, meet; prefix "-" for descending
  *   data-subscribe="0"       hide the "Add to my calendar" section
  *   data-theme="light"       light (default), dark, or auto (follows the visitor's system)
@@ -27,7 +28,7 @@
     el.setAttribute("data-mounted", "1");
     var id = "copcap-events-" + i + "-" + Math.random().toString(36).slice(2, 8);
     var params = new URLSearchParams({ embed: "1", id: id });
-    ["country", "sort", "subscribe", "theme", "bg"].forEach(function (k) {
+    ["country", "team", "sort", "subscribe", "theme", "bg"].forEach(function (k) {
       var v = el.getAttribute("data-" + k);
       if (v !== null) params.set(k, v);
     });

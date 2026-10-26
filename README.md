@@ -11,6 +11,6 @@ Source of truth is the Notion database "Eastern Denmark Business Events". A week
 
 - One-line embed (auto-height): `<div class="copcap-events"></div><script src="https://copenhagensynergy.github.io/copcap-events/embed.js" async></script>`
 - Plain iframe: `https://copenhagensynergy.github.io/copcap-events/?embed=1` (fixed height).
-- Options (as `data-*` on the div, or URL parameters on the iframe): `country` (`""` = all), `sort` (`date`, `event`, `organiser`, `sector`, `team`, `country`, `meet`; prefix `-` for descending, e.g. `sort=-date`), `subscribe=0`, `theme=light|dark|auto`, `bg=transparent`.
+- Options (as `data-*` on the div, or URL parameters on the iframe): `country` (`""` = all), `team` (`life-science`, `green-transition` or `tech`; shows only that CopCap team's events and hides the team column and team dropdown), `sort` (`date`, `event`, `organiser`, `sector`, `team`, `country`, `meet`; prefix `-` for descending, e.g. `sort=-date`), `subscribe=0`, `theme=light|dark|auto`, `bg=transparent`.
 - Demo: https://copenhagensynergy.github.io/copcap-events/embed-demo.html
 - Embed mode lives in `scripts/build_site.py` (generated page) and `embed.js` (hand-maintained loader). The page reports its height to the host with `postMessage({type:"copcap-events:resize", id, height})`; `embed.js` only accepts it from the copenhagensynergy.github.io origin.
