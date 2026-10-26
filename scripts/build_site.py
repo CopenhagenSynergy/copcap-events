@@ -1,6 +1,7 @@
 """Build events.ics + index.html for the Eastern Denmark events feed.
 Input: rows.json = list of dicts with keys url, Event, date:Date:start, date:Date:end,
-Venue, City, Organiser, Website, Description, Date note, Listing.
+Venue, City, Country, Organiser, Website, Description, Date note, Listing, Meet CopCap, Sector.
+Sector may be a list or a JSON array string; the CopCap team column is derived from it (see team()).
 Usage: python3 build_site.py rows.json BASE_URL outdir
 Only events whose end (or start) date is today or later are written.
 """
@@ -29,6 +30,8 @@ for r in rows:
     if e < today: continue
     evs.append((s, e, r))
 evs.sort(key=lambda x: x[0])
+if evs and not any("Sector" in r for _, _, r in evs):
+    print("WARNING: rows.json has no Sector field; re-query the Notion data with Sector so the Sector and CopCap team columns are filled", file=sys.stderr)
 
 stamp = dt.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
 L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Copenhagen Capacity//Eastern Denmark Events//EN",
@@ -58,15 +61,34 @@ def fmt(s, e):
     return f"{s.strftime('%-d %b')} – {e.strftime('%-d %b %Y')}"
 def meet(r): return (r.get("Meet CopCap") or "").strip() or "CopCap"
 def country(r): return (r.get("Country") or "").strip() or "Denmark"
+def sectors(r):
+    v = r.get("Sector") or []
+    if isinstance(v, str):
+        try: v = json.loads(v)
+        except ValueError: v = [x.strip() for x in v.split(",")]
+    return [x for x in v if x]
+# Which CopCap Investment Promotion team to talk to, picked from the Sector(s).
+# Life Science wins over Green Transition, which wins over Tech (the default).
+TEAM_BY_SECTOR = {
+    "Life Science & Health": "Life Science",
+    "Green Transition": "Green Transition", "Maritime": "Green Transition", "Property & Construction": "Green Transition",
+}
+def team(r):
+    if (r.get("Team") or "").strip(): return r["Team"].strip()  # manual override, if the column is ever added
+    picks = {TEAM_BY_SECTOR.get(x, "Tech") for x in sectors(r)}
+    return next((t for t in ("Life Science", "Green Transition", "Tech") if t in picks), "Tech")
 items = "".join(
     f'<tr data-country="{html.escape(country(r))}"><td class="d" data-l="Date"><time>{fmt(s, e)}</time></td>'
     f'<td class="ev" data-l="Event"><a href="{html.escape(r.get("Website") or "#")}" rel="noopener">{html.escape(r["Event"])}</a>'
     f'<span>{html.escape(r.get("Venue") or "")}</span>'
+    + (f'<p class="desc">{html.escape(r["Description"].strip())}</p>' if (r.get("Description") or "").strip() else "")
     + (f'<em>{html.escape(r["Date note"])}</em>' if r.get("Date note") else "") + "</td>"
     f'<td class="o" data-l="Organiser">{html.escape((r.get("Organiser") or "").strip())}</td>'
+    f'<td class="s" data-l="Sector">{html.escape(", ".join(sectors(r)))}</td>'
+    f'<td class="t" data-l="CopCap team">{html.escape(team(r))}</td>'
     f'<td class="c" data-l="Country">{html.escape(country(r))}</td>'
     f'<td class="m" data-l="Meet CopCap">{html.escape(meet(r))}</td></tr>'
-    for s, e, r in evs) or '<tr><td colspan="5">No upcoming events listed yet.</td></tr>'
+    for s, e, r in evs) or '<tr><td colspan="7">No upcoming events listed yet.</td></tr>'
 countries = sorted({country(r) for _, _, r in evs} | {"Denmark"}, key=lambda c: (c != "Denmark", c == "Online", c))
 opts = "".join(f'<option value="{html.escape(c)}"{" selected" if c == "Denmark" else ""}>{html.escape(c)}</option>' for c in countries) + '<option value="">All countries</option>'
 btns = "".join(f'<a class="btn" href="{html.escape(v)}">{k}</a>' for k, v in links.items())
@@ -80,17 +102,18 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name
 @media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}}}
 :root[data-theme=dark]{{--bg:#0d0c1f;--fg:#ecedf5;--muted:#a3a6ba;--line:#26264a;--card:#15143a;--navy:#c9c8ff;--teal:#5fb3ba}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Montserrat,system-ui,sans-serif}}
-main{{max-width:1040px;margin:0 auto;padding:40px 16px 64px}}h1,h2{{font-family:'IBM Plex Serif',Georgia,serif;color:var(--navy);line-height:1.2}}
+main{{max-width:1200px;margin:0 auto;padding:40px 16px 64px}}h1,h2{{font-family:'IBM Plex Serif',Georgia,serif;color:var(--navy);line-height:1.2}}
 h1{{font-size:2rem;margin:0 0 8px}}h2{{font-size:1.25rem;margin:40px 0 12px}}p{{color:var(--muted);margin:0 0 16px}}
 .btns{{display:flex;flex-wrap:wrap;gap:8px}}.btn{{background:var(--teal);color:#fff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600;font-size:.9rem}}
 .copy{{display:flex;gap:8px;margin-top:12px}}.copy input{{flex:1;min-width:0;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;font-size:.85rem}}
 .copy button{{padding:9px 14px;border:1px solid var(--teal);background:none;color:var(--teal);border-radius:8px;font:inherit;font-weight:600;cursor:pointer}}
 table{{width:100%;border-collapse:collapse}}th{{text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;padding:0 12px 8px 0;border-bottom:2px solid var(--line)}}
-td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:140px;white-space:nowrap}}td.m{{width:170px;font-size:.88rem}}td.c{{width:110px;font-size:.88rem}}td.o{{width:170px;font-size:.88rem}}tr[hidden]{{display:none}}
+td{{vertical-align:top;padding:14px 12px 14px 0;border-top:1px solid var(--line)}}td.d{{width:120px;white-space:nowrap}}td.m{{width:150px;font-size:.88rem}}td.c{{width:90px;font-size:.88rem}}td.o{{width:150px;font-size:.88rem}}td.s{{width:130px;font-size:.88rem}}td.t{{width:110px;font-size:.88rem;font-weight:600;color:var(--teal)}}tr[hidden]{{display:none}}
+td p.desc{{margin:6px 0 0;color:var(--fg);font-size:.88rem;line-height:1.45}}
 .filter{{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:.88rem}}.filter label{{font-weight:600}}.filter select{{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}}#cn{{color:var(--muted)}}
 time{{font-weight:600;color:var(--teal);font-size:.9rem}}td a{{color:var(--fg);font-weight:600;text-decoration:none}}td a:hover{{text-decoration:underline}}
 td span,td em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-size:.85rem;border-left:3px solid var(--teal);padding-left:10px}}footer{{margin-top:40px;font-size:.8rem;color:var(--muted)}}
-@media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m,td.c,td.o{{width:auto}}td.m::before,td.c::before,td.o::before{{content:attr(data-l) ": ";color:var(--muted)}}tr[hidden]{{display:none}}}}
+@media (max-width:600px){{thead{{display:none}}table,tbody,tr,td{{display:block;width:auto}}tr{{border-top:1px solid var(--line);padding:12px 0}}td{{border:0;padding:2px 0}}td.d,td.m,td.c,td.o,td.s,td.t{{width:auto}}td.m::before,td.c::before,td.o::before,td.s::before,td.t::before{{content:attr(data-l) ": ";color:var(--muted)}}tr[hidden]{{display:none}}}}
 .embed main{{max-width:none;padding:0 0 8px}}.embed .intro,.embed footer,.embed h2.first{{display:none}}.nosub .sub{{display:none}}.clear body{{background:transparent}}
 </style></head><body><main>
 <div class="intro"><h1>{CAL}</h1>
@@ -98,7 +121,7 @@ td span,td em{{display:block;color:var(--muted);font-size:.88rem}}p.note{{font-s
 <p class="note">This events calendar is maintained by Copenhagen Capacity through its Copenhagen Synergy AI.</p></div>
 <h2 class="first">Upcoming events</h2>
 <div class="filter"><label for="cf">Country</label><select id="cf">{opts}</select><span id="cn"></span></div>
-<table><thead><tr><th>Date</th><th>Event</th><th>Organiser</th><th>Country</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
+<table><thead><tr><th>Date</th><th>Event</th><th>Organiser</th><th>Sector</th><th>CopCap team</th><th>Country</th><th>Meet CopCap</th></tr></thead><tbody>{items}</tbody></table>
 <p id="none" hidden>No upcoming events in this country yet.</p>
 <script>
 (function(){{var sel=document.getElementById('cf'),rows=[].slice.call(document.querySelectorAll('tbody tr[data-country]')),cn=document.getElementById('cn'),none=document.getElementById('none');
