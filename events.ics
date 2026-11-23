@@ -9,54 +9,8 @@ X-WR-CALDESC:Verified business events in Copenhagen and Eastern Denmark
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
-UID:3ec881363d0d81889317daa463a66409@eastern-denmark-events
-DTSTAMP:20261116T060411Z
-DTSTART;VALUE=DATE:20261116
-DTEND;VALUE=DATE:20261120
-SUMMARY:SAPinsider Copenhagen 2026
-LOCATION:Tivoli Hotel & Congress Center\, Arni Magnussons Gade 2\, 1577 Kø
- benhavn
-DESCRIPTION:A conference on SAP strategies with education\, expert insights
-  and peer networking.\n16 November is a pre-conference day.\nOrganiser: SA
- Pinsider\nMeet CopCap: CopCap\nhttps://copenhagen.sapinsider.org/
-URL:https://copenhagen.sapinsider.org/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:3ed881363d0d81cdb009da369d163641@eastern-denmark-events
-DTSTAMP:20261116T060411Z
-DTSTART;VALUE=DATE:20261118
-DTEND;VALUE=DATE:20261119
-SUMMARY:Rapportlancering: Globalt talent i danske virksomheder
-LOCATION:Copenhagen Capacity\, Havneholmen 29\, 1561 København V
-DESCRIPTION:Copenhagen Capacity presents survey results from 149 companies 
- on international recruitment and retention\, followed by a panel with muni
- cipal leaders and a networking reception.\n14:00–16:30 (arrival from 13:
- 30). Danish-language event. Registration via copcap.com.\nOrganiser: Copen
- hagen Capacity\nMeet CopCap: Asbjørn Overgaard\, CEO\; Dan Rosenberg\, He
- ad of Talent\nhttps://www.copcap.com/lancering-event-company-survey-2026
-URL:https://www.copcap.com/lancering-event-company-survey-2026
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:405881363d0d811d881ffb9e296dd8f7@eastern-denmark-events
-DTSTAMP:20261116T060411Z
-DTSTART;VALUE=DATE:20261119
-DTEND;VALUE=DATE:20261120
-SUMMARY:Translating Women's Health Innovation X BioInnovation Institute
-LOCATION:BioInnovation Institute\, Ole Maaløes Vej 3\, 2200 København N
-DESCRIPTION:Free symposium on women's and reproductive health research and 
- innovation\, hosted by BioInnovation Institute.\n08:30–17:00.\nOrganiser
- : BioInnovation Institute (listed by Innovation District Copenhagen)\nMeet
-  CopCap: CopCap\nhttps://innovationdistrictcopenhagen.com/event/translatin
- g-womens-health-innovation-x-bioinnovation-institute/
-URL:https://innovationdistrictcopenhagen.com/event/translating-womens-healt
- h-innovation-x-bioinnovation-institute/
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:3ec881363d0d818cb250c9b61d44d63a@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261128
 SUMMARY:Horizons Clean Energy Expansion Week 2026
@@ -70,7 +24,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d816da77ac5fef2500f1e@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Biochar Forward 2026
@@ -85,7 +39,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d8112967efc342c446ff9@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270202
 DTEND;VALUE=DATE:20270205
 SUMMARY:CIFF 68
@@ -98,7 +52,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d81179f24d631d38988f9@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270210
 DTEND;VALUE=DATE:20270212
 SUMMARY:Pig Research Summit 2027
@@ -112,7 +66,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d819fa1cfe20006146fa1@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270223
 DTEND;VALUE=DATE:20270226
 SUMMARY:DeCarbon Copenhagen 2027
@@ -126,7 +80,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d81baa5ccf44c1974c299@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270223
 DTEND;VALUE=DATE:20270225
 SUMMARY:World Maritime Forum 2027
@@ -139,7 +93,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d81429f3fd5305baa998d@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270309
 DTEND;VALUE=DATE:20270310
 SUMMARY:Danish Life Science Summit 2027
@@ -155,7 +109,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d8118ba9af8e01ff502cb@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270310
 DTEND;VALUE=DATE:20270312
 SUMMARY:Insurance Innovators Nordics 2027
@@ -168,7 +122,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d8101ac03feadb9677135@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270317
 DTEND;VALUE=DATE:20270319
 SUMMARY:CS4CA Nordic Summit 2027
@@ -181,7 +135,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d818498a3e9f5375554bd@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270319
 DTEND;VALUE=DATE:20270320
 SUMMARY:The Summit 2027
@@ -195,7 +149,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ed881363d0d81829a6ee3811b0e61d0@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270401
 DTEND;VALUE=DATE:20270402
 SUMMARY:Adaptable Building Conference 2027
@@ -212,8 +166,23 @@ URL:https://www.eventbrite.dk/e/adaptable-building-conference-2027-tickets-
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:421881363d0d8128947ceafee8b10527@eastern-denmark-events
+DTSTAMP:20261123T060712Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+SUMMARY:ECM Pharmacology Masterclass 2027
+LOCATION:DGI Byen\, Copenhagen
+DESCRIPTION:Free hybrid event on the biology of the extracellular matrix an
+ d the role of ECM biomarkers in drug development\, bringing together exper
+ ts from academia and industry.\nHybrid attendance available.\nOrganiser: T
+ he Extracellular Matrix Pharmacology Congress (ECM Congress)\nMeet CopCap:
+  CopCap\nhttps://ecm-congress.org/masterclass/
+URL:https://ecm-congress.org/masterclass/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:3f2881363d0d8177b2e3ecf6bc29c255@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270419
 DTEND;VALUE=DATE:20270422
 SUMMARY:GEO 28th Annual Conference – Copenhagen 2027
@@ -228,7 +197,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d81c49b1ae6b71c1ae41a@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270420
 DTEND;VALUE=DATE:20270423
 SUMMARY:WindEurope Annual Event 2027
@@ -239,8 +208,36 @@ URL:https://windeurope.org/annual2027/
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:421881363d0d8125a7c0d0f305841a72@eastern-denmark-events
+DTSTAMP:20261123T060712Z
+DTSTART;VALUE=DATE:20270421
+DTEND;VALUE=DATE:20270423
+SUMMARY:LOOP Forum 2027
+LOCATION:Lokomotivværkstedet\, Otto Busses Vej 5A\, 2450 København SV
+DESCRIPTION:Forum with exhibitors on the circular economy\, waste and resou
+ rce efficiency\, bringing together companies\, decision-makers and industr
+ y stakeholders.\nOrganiser: Relevent\nMeet CopCap: CopCap\nhttps://www.loo
+ pforum.dk/
+URL:https://www.loopforum.dk/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:421881363d0d81a596bbca28190b16c1@eastern-denmark-events
+DTSTAMP:20261123T060712Z
+DTSTART;VALUE=DATE:20270428
+DTEND;VALUE=DATE:20270501
+SUMMARY:IAFP Europe 2027 – European Symposium on Food Safety
+LOCATION:Radisson Blu Scandinavia Hotel\, Copenhagen
+DESCRIPTION:Three-day symposium for food safety professionals with research
+  and expert-led sessions.\nOrganiser: International Association for Food P
+ rotection (IAFP)\nMeet CopCap: CopCap\nhttps://www.foodprotection.org/euro
+ peansymposium/
+URL:https://www.foodprotection.org/europeansymposium/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:405881363d0d81548257cd6120d31fb8@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270510
 DTEND;VALUE=DATE:20270513
 SUMMARY:Bio€quity Europe 2027
@@ -254,7 +251,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d8153867feb1659676141@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270511
 DTEND;VALUE=DATE:20270515
 SUMMARY:EuroSTAR Software Testing Conference 2027
@@ -267,7 +264,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d81988f14c3dd0f40acc1@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270512
 DTEND;VALUE=DATE:20270514
 SUMMARY:V2 Security København 2027
@@ -280,7 +277,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81b09e9ff23c4d92e2e2@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270513
 DTEND;VALUE=DATE:20270515
 SUMMARY:LSX Nordic Congress 2027
@@ -295,7 +292,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d8123915efdf5207d8f04@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270520
 DTEND;VALUE=DATE:20270522
 SUMMARY:Veeva R&D & Quality Summit 2027 (Copenhagen)
@@ -308,7 +305,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d8164b332daf2b8d11e15@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270525
 DTEND;VALUE=DATE:20270528
 SUMMARY:Global Fashion Summit: Copenhagen Edition 2027
@@ -322,7 +319,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81a198a9f1c012a3bfe7@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270525
 DTEND;VALUE=DATE:20270526
 SUMMARY:PropTech Symposium 2027
@@ -335,7 +332,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3ec881363d0d81cb90c8c2c2abbb31e8@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270617
 DTEND;VALUE=DATE:20270619
 SUMMARY:TwentyThree Summit 2027
@@ -347,7 +344,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81a48f40e98da70ddc81@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270908
 DTEND;VALUE=DATE:20270910
 SUMMARY:TechBBQ 2027
@@ -359,7 +356,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:3eb881363d0d81ab9f61f108ffb05d1f@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270922
 DTEND;VALUE=DATE:20270924
 SUMMARY:BIM World Copenhagen 2027
@@ -372,7 +369,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d816aa641ea73ce1fa2f2@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20270929
 DTEND;VALUE=DATE:20271001
 SUMMARY:Nordic Life Science Days 2027
@@ -386,7 +383,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:40c881363d0d81928c68d4582f54efca@eastern-denmark-events
-DTSTAMP:20261116T060411Z
+DTSTAMP:20261123T060712Z
 DTSTART;VALUE=DATE:20271004
 DTEND;VALUE=DATE:20271009
 SUMMARY:GOTO Copenhagen 2027
@@ -396,6 +393,20 @@ DESCRIPTION:Software development conference with masterclasses on 4–5 Oct
  nd the city\; conference 6–8 Oct at TAP1.\nOrganiser: Trifork (GOTO conf
  erences)\nMeet CopCap: CopCap\nhttps://gotocph.com/2027
 URL:https://gotocph.com/2027
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:421881363d0d8129a6f8dc55182c6235@eastern-denmark-events
+DTSTAMP:20261123T060712Z
+DTSTART;VALUE=DATE:20271026
+DTEND;VALUE=DATE:20271030
+SUMMARY:ESGCT 34th Annual Congress 2027
+LOCATION:Bella Center Copenhagen
+DESCRIPTION:Annual congress of the European gene and cell therapy community
+ .\nDates and venue as listed on Bella Center Copenhagen's official calenda
+ r.\nOrganiser: European Society of Gene & Cell Therapy (ESGCT)\nMeet CopCa
+ p: CopCap\nhttps://www.esgct.eu/
+URL:https://www.esgct.eu/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
